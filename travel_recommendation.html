@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TravelBloom | Explore Dream Destinations</title>
+  <meta name="description"
+    content="Discover extraordinary travel destinations with TravelBloom. Explore beaches, temples, mosques, and countries around the world.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./travel_recommendation.css">
+</head>
+
+<body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="./travel_recommendation.html" class="navbar__logo" aria-label="TravelBloom Home">
+      <!-- Airplane SVG icon -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+      <span>TravelBloom</span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="navbar__links">
+      <a href="./travel_recommendation.html" class="active">Home</a>
+      <a href="./about_us.html">About Us</a>
+      <a href="./contact_us.html">Contact Us</a>
+    </div>
+
+    <!-- Search bar (Home page only) -->
+    <div class="navbar__search" role="search" aria-label="Search destinations">
+      <input
+        type="text"
+        id="search-input"
+        class="navbar__search-input"
+        placeholder="Enter a destination or keyword"
+        aria-label="Enter a destination or keyword"
+        autocomplete="off"
+      >
+      <!-- Search icon (decorative) -->
+      <svg class="navbar__search-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+      <button type="button" id="search-btn" class="navbar__search-btn" aria-label="Search">Search</button>
+      <button type="button" id="clear-btn" class="navbar__clear-btn" aria-label="Clear search">Clear</button>
+    </div>
+
+    <!-- Validation message -->
+    <div id="search-error" class="navbar__search-error" role="alert" aria-live="polite"></div>
+
+    <!-- Hamburger (mobile) -->
+    <button
+      type="button"
+      class="navbar__hamburger"
+      id="hamburger-btn"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="navbar__mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <a href="./travel_recommendation.html">Home</a>
+    <a href="./about_us.html">About Us</a>
+    <a href="./contact_us.html">Contact Us</a>
+
+    <!-- Mobile search -->
+    <div class="navbar__mobile-search" role="search" aria-label="Search destinations">
+      <input
+        type="text"
+        id="mobile-search-input"
+        class="navbar__search-input"
+        placeholder="Search destinations..."
+        aria-label="Search destinations"
+        autocomplete="off"
+      >
+      <div class="navbar__mobile-search-btns">
+        <button type="button" id="mobile-search-btn" class="navbar__search-btn">Search</button>
+        <button type="button" id="mobile-clear-btn" class="navbar__clear-btn">Clear</button>
+      </div>
+    </div>
+
+    <!-- Social links in mobile menu -->
+    <div class="navbar__mobile-social" aria-label="Social media links">
+      <a href="#" aria-label="Twitter">
+        <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="#" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========== HERO SECTION ========== -->
+  <main id="main-content">
+    <section class="hero" aria-label="Hero banner">
+      <!-- Background image -->
+      <div class="hero__bg">
+        <img
+          src="./images/hero-bg.jpg"
+          alt="Aerial view of a vibrant city skyline"
+          loading="eager"
+          decoding="async"
+          width="1920"
+          height="1080"
+          onerror="this.onerror=null; this.src='./images/placeholder.jpg';"
+        >
+      </div>
+      <div class="hero__overlay"></div>
+
+      <!-- Hero content -->
+      <div class="hero__content">
+        <h1 class="hero__title">Explore<br>Dream<br>Destination</h1>
+        <p class="hero__description">
+          It encourages exploration of unfamiliar territories, embracing diverse cultures and
+          landscapes, while pursuing the desired destination that captivates the heart and
+          ignites a sense of wonder.
+        </p>
+        <a href="#" class="hero__cta">Book Now</a>
+      </div>
+
+      <!-- Search results container (overlays hero on right) -->
+      <div id="search-results" class="search-results" aria-label="Search results" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- ========== SOCIAL SIDEBAR (desktop only) ========== -->
+  <aside class="social-sidebar" aria-label="Social media links">
+    <a href="#" aria-label="Twitter">
+      <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+    </a>
+    <a href="#" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    </a>
+    <a href="#" aria-label="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+  </aside>
+
+  <script src="./travel_recommendation.js"></script>
+</body>
+
+</html>

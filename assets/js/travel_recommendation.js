@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadData() {
     try {
-      const response = await fetch('./travel_recommendation_api.json');
+      const response = await fetch('./assets/utils/travel_recommendation_api.json');
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       travelData = await response.json();
     } catch (err) {
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         decoding="async"
         width="400"
         height="300"
-        onerror="this.onerror=null; this.src='./images/placeholder.jpg';"
+        onerror="this.onerror=null; this.src='./assets/images/placeholder.jpg';"
       >
       <div class="result-card__body">
         <h3 class="result-card__name">${escapeHtml(item.name)}</h3>
